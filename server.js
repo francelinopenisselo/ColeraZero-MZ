@@ -2,7 +2,6 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = 3000;
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -14,7 +13,7 @@ const MIME_TYPES = {
   '.json': 'application/json'
 };
 
-const server = http.createServer((req, res) => {
+function handler(req, res) {
   let reqUrl = req.url.split('?')[0];
   if (reqUrl === '/' || reqUrl === '') {
     reqUrl = '/index.html';
@@ -35,8 +34,16 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': contentType });
     fs.createReadStream(filePath).pipe(res);
   });
-});
+}
 
-server.listen(PORT, '127.0.0.1', () => {
-  console.log(`Servidor local a correr em http://127.0.0.1:${PORT}`);
-});
+// Execução local
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  const server = http.createServer(handler);
+  server.listen(PORT, '127.0.0.1', () => {
+    console.log(`Servidor local a correr em http://127.0.0.1:${PORT}`);
+  });
+}
+
+// Export para compatibilidade com ambiente serverless
+module.exports = handler;
