@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Prevenção da Cólera e Cuidados com a Água em Moçambique</title>
+  <meta name="description" content="Aplicação multimédia educativa sobre prevenção da cólera, tratamento de água com Certeza e fervura e hábitos de higiene em Moçambique. UP-Maputo.">
+  <meta name="theme-color" content="#091e3a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Biblioteca Supabase (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Ficheiro de Configuração do Supabase -->
+  <script src="supabase-config.js"></script>
+</head>
+<body>
+
+  <main class="app-viewport">
+
+    <!-- Barra Superior -->
+    <header class="global-header">
+      <div class="brand-badge">
+        <div class="brand-icon-wrapper" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Água Segura • Moçambique</h1>
+          <p>UP-Maputo • Informática Aplicada</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- Locução em áudio -->
+        <button id="audioNarratorBtn" class="audio-narrator-btn" title="Ouvir áudio deste ecrã" aria-label="Reproduzir áudio">
+          <div class="sound-bars" aria-hidden="true">
+            <div class="sound-bar"></div>
+            <div class="sound-bar"></div>
+            <div class="sound-bar"></div>
+          </div>
+          <span id="narratorStatusText">Ouvir</span>
+        </button>
+
+        <!-- Indicador de ecrãs -->
+        <nav class="screen-stepper" aria-label="Navegação pelos ecrãs">
+          <button class="step-indicator active" data-step="1" title="Ecrã 1: Início">1</button>
+          <button class="step-indicator" data-step="2" title="Ecrã 2: Contexto">2</button>
+          <button class="step-indicator" data-step="3" title="Ecrã 3: 3 Passos">3</button>
+          <button class="step-indicator" data-step="4" title="Ecrã 4: Quiz">4</button>
+          <button class="step-indicator" data-step="5" title="Ecrã 5: Conclusão">5</button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Área dos Ecrãs -->
+    <div class="main-stage">
+
+      <!-- Ecrã 1: Início -->
+      <section class="screen-card active" data-screen="1" id="screen-1">
+        <div class="screen-meta">
+          <span class="screen-tag">Ecrã 1 • Abertura</span>
+          <span class="scientific-badge">Guia Comunitário</span>
+        </div>
+
+        <div class="cover-layout">
+          <div class="cover-title-group">
+            <h2 id="title-screen-1">Prevenção da Cólera e <span class="highlight-gradient">Cuidados com a Água</span></h2>
+            <p class="cover-description">
+              Aplicação multimédia educacional para escolas, comunidades e famílias em Moçambique. Aprenda as medidas práticas de tratamento da água e higiene no dia a dia.
+            </p>
+
+            <div class="credits-pill">
+              <strong>Mini-Projecto Multimédia Educacional</strong>
+              Almeida Fernando Chiboze • Francelino Penisselo • Safira António Vilanculos<br>
+              Docente: Miguel Maria Ribeiro da Silva | Outubro de 2026
+            </div>
+
+            <div class="cover-actions">
+              <button class="nav-action-btn primary" data-goto-screen="2">
+                <span>Começar Guia Comunitário</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+              
+              <button class="nav-action-btn secondary" data-goto-screen="4">
+                <span>Ir ao Quiz</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="cover-hero-visual">
+            <div class="water-orb-art" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+              </svg>
+            </div>
+            <div class="orb-sub-badge">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <span>Água Tratada = Vida Saudável</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ecrã 2: Contexto -->
+      <section class="screen-card" data-screen="2" id="screen-2">
+        <div class="screen-meta">
+          <span class="screen-tag">Ecrã 2 • Contexto</span>
+          <span class="scientific-badge">Saúde Pública</span>
+        </div>
+
+        <div>
+          <h2 class="screen-heading" id="title-screen-2">O Desafio Sanitário em Moçambique</h2>
+          <p class="screen-lead">Superando a barreira da informação através de recursos visuais e sonoros.</p>
+        </div>
+
+        <div class="context-grid">
+          <div class="image-showcase">
+            <img src="assets/comunidade_agua.jpg" alt="Ponto comunitário de recolha de água em Moçambique" loading="lazy">
+            <div class="image-caption">
+              <strong>Ponto de Recolha Comunitário:</strong> A água de poços abertos e fontanários sem cloração é a via mais comum de contaminação nas épocas chuvosas.
+            </div>
+          </div>
+
+          <div class="context-cards-stack">
+            <article class="fact-card">
+              <div class="fact-icon danger" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              </div>
+              <div class="fact-body">
+                <h3>Surtos Pós-Ciclones e Época Chuvosa</h3>
+                <p>As inundações e o consumo de poços desprotegidos aceleram a propagação do <em>Vibrio cholerae</em> nas áreas suburbanas e rurais, causando desidratação rápida.</p>
+              </div>
+            </article>
+
+            <article class="fact-card info">
+              <div class="fact-icon info" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              </div>
+              <div class="fact-body">
+                <h3>Barreira da Informação</h3>
+                <p>Folhetos em papel nem sempre chegam a todos. A combinação de imagens, voz e interação facilita a transmissão das regras de prevenção.</p>
+              </div>
+            </article>
+
+            <article class="fact-card success">
+              <div class="fact-icon success" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              </div>
+              <div class="fact-body">
+                <h3>Objetivo Central</h3>
+                <p>Demonstrar de forma prática o <strong>tratamento com Certeza</strong>, a <strong>fervura</strong> e a <strong>lavagem correta das mãos</strong>.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ecrã 3: As 3 Regras -->
+      <section class="screen-card" data-screen="3" id="screen-3">
+        <div class="screen-meta">
+          <span class="screen-tag">Ecrã 3 • Passos de Prevenção</span>
+          <span class="scientific-badge">Ação Prática</span>
+        </div>
+
+        <div>
+          <h2 class="screen-heading" id="title-screen-3">Os 3 Passos Vitais de Prevenção</h2>
+          <p class="screen-lead">Medidas simples que quebram o ciclo de contaminação da cólera.</p>
+        </div>
+
+        <div class="golden-rules-container">
+          <!-- Passo 1 -->
+          <article class="rule-box">
+            <div>
+              <div class="rule-header">
+                <div class="rule-number">1</div>
+                <h3 class="rule-title">Tratar a Água na Origem</h3>
+              </div>
+              <div class="rule-body">
+                <ul>
+                  <li><strong>Opção A: Fervura Completa</strong><br>Ferver em borbulhas fortes durante 1 a 3 minutos elimina as bactérias ativas.</li>
+                  <li><strong>Opção B: Cloração com Certeza</strong><br>1 tampa para cada balde de 20 litros. Aguardar 30 minutos em repouso antes de beber.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Calculador de Dosagem -->
+            <div class="interactive-tool-card">
+              <span class="tool-label">Simulador de Dosagem (Certeza):</span>
+              <div class="dosing-select-group">
+                <button class="dose-btn" data-liters="10">10L</button>
+                <button class="dose-btn active" data-liters="20">20L</button>
+                <button class="dose-btn" data-liters="40">40L</button>
+                <button class="dose-btn" data-liters="60">60L</button>
+              </div>
+              <div class="dosing-result" id="dosingOutput">
+                <strong>Dosagem:</strong> 1 tampa cheia (5 ml)<br>
+                <span style="font-weight: 400; font-size: 0.76rem; color: #475569;">Balde de 20L: adicione 1 tampa de Certeza, misture e aguarde 30 minutos em repouso obrigatório.</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Passo 2 -->
+          <article class="rule-box">
+            <div>
+              <div class="rule-header">
+                <div class="rule-number">2</div>
+                <h3 class="rule-title">Balde Sempre Fechado</h3>
+              </div>
+              <div class="rule-body">
+                <p>Mesmo limpa, a água volta a contaminar-se se for mal guardada:</p>
+                <ul>
+                  <li>Mantenha o balde sempre com a tampa bem posta.</li>
+                  <li>Evite mergulhar copos ou canecas dentro do balde.</li>
+                  <li>Sempre que possível, use baldes com torneira ou retire com caneca limpa de cabo longo.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="interactive-tool-card" style="text-align: center;">
+              <span class="tool-label">Cuidado Essencial</span>
+              <div style="font-size: 0.8rem; color: #0369a1; font-weight: 600; line-height: 1.4;">
+                Balde destapado ou caneca suja anula todo o tratamento feito.
+              </div>
+            </div>
+          </article>
+
+          <!-- Passo 3 -->
+          <article class="rule-box">
+            <div>
+              <div class="rule-header">
+                <div class="rule-number">3</div>
+                <h3 class="rule-title">Lavar as Mãos com Sabão ou Cinza</h3>
+              </div>
+              <div class="rule-body">
+                <p>A higienização deve durar pelo menos <strong>20 segundos</strong>:</p>
+                <ul>
+                  <li>Sempre após ir à latrina.</li>
+                  <li>Antes de cozinhar ou comer.</li>
+                  <li>Antes de amamentar ou alimentar crianças.</li>
+                  <li>Na falta de sabão, a cinza é uma boa alternativa local.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Treino de 20 segundos -->
+            <div class="interactive-tool-card">
+              <span class="tool-label">Contagem de 20 Segundos:</span>
+              <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.4rem;">
+                <button id="washTimerBtn" class="wash-timer-btn" aria-label="Iniciar treino de 20 segundos">
+                  <span>▶ Praticar 20 Segundos</span>
+                </button>
+                <span id="washTimerDisplay" style="font-weight: 800; font-size: 1rem; color: #0284c7; min-width: 32px;">20s</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Ecrã 4: Quiz -->
+      <section class="screen-card" data-screen="4" id="screen-4">
+        <div class="screen-meta">
+          <span class="screen-tag">Ecrã 4 • Quiz Rápido</span>
+          <span class="scientific-badge">Avaliação</span>
+        </div>
+
+        <div>
+          <h2 class="screen-heading" id="title-screen-4">Quiz Comunitário</h2>
+          <p class="screen-lead">Teste o seu conhecimento prático para aplicar no dia a dia.</p>
+        </div>
+
+        <div class="quiz-wrapper">
+          <div class="question-box">
+            <h3>Pergunta Prática: Como deve ser tratada a água de um poço aberto antes de beber?</h3>
+          </div>
+
+          <!-- Opções de resposta -->
+          <div class="quiz-options-list" id="quizOptionsContainer">
+            <button class="quiz-option-btn" data-option="A" data-correct="false">
+              <div class="option-letter">A</div>
+              <div class="option-text">Deixar a água repousar 5 minutos e beber apenas a camada de cima.</div>
+              <span class="option-badge">Opção A</span>
+            </button>
+
+            <button class="quiz-option-btn" data-option="B" data-correct="true">
+              <div class="option-letter">B</div>
+              <div class="option-text">Ferver até borbulhar (1 a 3 min) ou tratar com produto Certeza (aguardando 30 min).</div>
+              <span class="option-badge" style="background: #e0f2fe; color: #0284c7;">Opção B</span>
+            </button>
+
+            <button class="quiz-option-btn" data-option="C" data-correct="false">
+              <div class="option-letter">C</div>
+              <div class="option-text">Coar a água através de um pano limpo para retirar a poeira visível.</div>
+              <span class="option-badge">Opção C</span>
+            </button>
+          </div>
+
+          <!-- Feedback de Sucesso -->
+          <div class="feedback-container success" id="feedbackSuccess" role="alert" aria-live="polite">
+            <div class="feedback-header">
+              <div class="feedback-icon" aria-hidden="true">✓</div>
+              <div>
+                <h4>Resposta Correta!</h4>
+                <p style="font-size: 0.85rem; color: #065f46; font-weight: 500;">Medida recomendada pelo Ministério da Saúde (MISAU).</p>
+              </div>
+            </div>
+            <p class="feedback-text">
+              Ferver a água até borbulhar ou adicionar Certeza na dosagem certa (1 tampa para 20 litros) e aguardar 30 minutos elimina de forma eficaz a bactéria da cólera.
+            </p>
+            <div>
+              <button class="hotspot-advance-btn" id="advanceQuizBtn">
+                <span>Avançar para Conclusão</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Feedback de Erro -->
+          <div class="feedback-container error" id="feedbackError" role="alert" aria-live="polite">
+            <div class="feedback-header">
+              <div class="feedback-icon" aria-hidden="true">✕</div>
+              <div>
+                <h4>Atenção: Resposta Incorreta</h4>
+                <p style="font-size: 0.85rem; color: #9f1239; font-weight: 500;">Prática arriscada para a saúde.</p>
+              </div>
+            </div>
+            <p class="feedback-text" id="errorExplanation">
+              Esta prática retira apenas a sujeira aparente. As bactérias continuam presentes e invisíveis na água.
+            </p>
+            <div>
+              <button class="hotspot-retry-btn" id="retryQuizBtn" aria-label="Voltar e tentar novamente">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                <span>Voltar e Tentar Novamente</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ecrã 5: Conclusão & Mural Comunitário Supabase -->
+      <section class="screen-card" data-screen="5" id="screen-5">
+        <div class="screen-meta">
+          <span class="screen-tag">Ecrã 5 • Conclusão</span>
+          <span class="scientific-badge">Ficha Técnica & Comunidade</span>
+        </div>
+
+        <div>
+          <h2 class="screen-heading" id="title-screen-5">Conclusão e Enquadramento</h2>
+          <p class="screen-lead">A prevenção da cólera depende de hábitos diários partilhados na família e comunidade.</p>
+        </div>
+
+        <div class="conclusion-grid">
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div class="conclusion-message-card">
+              <h3>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                Mensagem Comunitária
+              </h3>
+              <p>
+                Tratar a água com Certeza ou fervura, guardar os baldes sempre fechados e lavar as mãos com sabão ou cinza são medidas acessíveis que salvam vidas nas nossas escolas e bairros.
+              </p>
+              <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                <button class="nav-action-btn primary" data-goto-screen="1" style="font-size: 0.85rem; padding: 0.5rem 1.2rem;">
+                  <span>Reiniciar Guia</span>
+                </button>
+                <button class="nav-action-btn secondary" data-goto-screen="4" style="font-size: 0.85rem; padding: 0.5rem 1.2rem; background: #059669; border-color: #059669;">
+                  <span>Repetir o Quiz</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Mural de Compromissos Comunitários (Supabase) -->
+            <div class="community-board-card">
+              <div class="community-board-header">
+                <h4>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                  Mural de Acção Comunitária
+                </h4>
+                <span id="supabaseStatusBadge" class="supabase-status-badge">Modo Local</span>
+              </div>
+              <p style="font-size: 0.8rem; color: #475569; margin-bottom: 0.8rem;">
+                Registe o compromisso da sua escola, bairro ou família com os cuidados de água e higiene:
+              </p>
+
+              <!-- Formulário -->
+              <form id="communityForm" class="community-form">
+                <div class="form-row-grid">
+                  <input type="text" id="commName" placeholder="Seu Nome / Turma" required class="comm-input" maxlength="60">
+                  <input type="text" id="commLocation" placeholder="Escola, Bairro ou Província" required class="comm-input" maxlength="60">
+                </div>
+                <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap;">
+                  <input type="text" id="commMessage" placeholder="Compromisso (ex: Fervemos sempre a água do poço)" required class="comm-input" style="flex: 1;" maxlength="140">
+                  <button type="submit" id="commSubmitBtn" class="comm-submit-btn">Partilhar</button>
+                </div>
+              </form>
+
+              <!-- Lista de relatos -->
+              <div class="community-posts-list" id="communityPostsList">
+                <!-- Inserido dinamicamente via JS/Supabase -->
+              </div>
+            </div>
+
+            <!-- Fases do Projeto -->
+            <div class="lifecycle-phases">
+              <span class="lifecycle-title">Fases do Projecto Multimédia</span>
+              <div class="phases-strip">
+                <div class="phase-pill active">1. Planeamento</div>
+                <div class="phase-pill active">2. Pré-Produção</div>
+                <div class="phase-pill active">3. Produção</div>
+                <div class="phase-pill active">4. Testes Alfa/Beta</div>
+                <div class="phase-pill active">5. Lançamento</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Créditos Académicos -->
+          <div class="academic-credits-card">
+            <div>
+              <h4>Ficha Técnica</h4>
+              <p style="font-size: 0.82rem; color: #64748b; margin-bottom: 0.75rem;">
+                Universidade Pedagógica de Maputo • Faculdade de Engenharias e Tecnologias • Licenciatura em Informática Aplicada
+              </p>
+
+              <ul class="team-list">
+                <li>Almeida Fernando Chiboze</li>
+                <li>Francelino Penisselo</li>
+                <li>Safira António Vilanculos</li>
+              </ul>
+
+              <div class="prof-info">
+                <strong>Docente:</strong> Miguel Maria Ribeiro da Silva<br>
+                <strong>Disciplina:</strong> Ferramentas e Aplicações Multimédia (Outubro de 2026)
+              </div>
+            </div>
+
+            <div class="references-box">
+              <strong>Referências:</strong><br>
+              • Ribeiro, N. M. (2004). <em>Multimédia e tecnologias interactivas</em>. FCA.<br>
+              • Chapman, N., & Chapman, J. (2000). <em>Digital multimedia</em>. John Wiley & Sons.<br>
+              • MISAU (2016). <em>Manual de prevenção e controlo da cólera</em>.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Rodapé e Navegação -->
+    <footer class="global-footer">
+      <div class="footer-info">
+        Ecrã <span id="footerScreenNumber" style="font-weight: 700; color: #38bdf8;">1 / 5</span>
+      </div>
+
+      <div class="footer-nav-buttons">
+        <button id="prevBtn" class="nav-action-btn secondary" disabled aria-label="Ecrã anterior">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <span>Anterior</span>
+        </button>
+
+        <button id="nextBtn" class="nav-action-btn primary" aria-label="Próximo ecrã">
+          <span>Avançar</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+    </footer>
+
+  </main>
+
+  <div id="toastNotice" class="toast-notice" role="status" aria-live="polite">
+    <span class="toast-text"></span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
