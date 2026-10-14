@@ -1,9 +1,0 @@
-{
-  "name": "colerazero-mz",
-  "version": "1.0.0",
-  "description": "Aplicação Multimédia Educacional sobre Prevenção da Cólera em Moçambique",
-  "private": true,
-  "scripts": {
-    "dev": "node server.js"
-  }
-}
