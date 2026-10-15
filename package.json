@@ -1,0 +1,19 @@
+{
+  "name": "prevencao-colera-multimedia",
+  "version": "1.0.0",
+  "description": "Aplicação Multimédia Educacional sobre Prevenção da Cólera e Cuidados com a Água em Moçambique",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "multimedia",
+    "educacao",
+    "saude-publica",
+    "mocambique",
+    "up-maputo"
+  ],
+  "author": "Almeida Fernando Chiboze, Francelino Penisselo, Safira António Vilanculos",
+  "license": "MIT"
+}
